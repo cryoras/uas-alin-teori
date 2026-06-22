@@ -129,6 +129,10 @@ def gauss_ordo_4(matriks):
         ) / koefisien_diagonal
 
     return solusi
+    print("W = ",solusi[0])
+    print("X = ",solusi[1])
+    print("Y = ",solusi[2])
+    print("Z = ",solusi[3])
 
 
 def main():
