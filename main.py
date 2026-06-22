@@ -24,8 +24,15 @@ ordo_4 = [
     [1, 2, 3, 5, 30]
 ]
 
-def gauss_ordo_1():
-  pass
+def gauss_ordo_1(m):
+    a = m[0][0]
+    b = m[0][1]
+    if a == 0:
+        print("Koefisien bernilai 0")
+        return
+    x = b / a
+    print("\nHasil:")
+    print("x =", x)
 
 def gauss_ordo_2():
   pass
