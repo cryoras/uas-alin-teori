@@ -34,8 +34,32 @@ def gauss_ordo_1(m):
     print("\nHasil:")
     print("x =", x)
 
-def gauss_ordo_2():
-  pass
+def gauss_ordo_2(m):
+
+    if m[0][0] == 0:
+        print("Pivot bernilai 0")
+        return
+
+    faktor = m [1][0] / m[0][0]
+
+    for j in range(3):
+        m[1][j] = m[1][j] - faktor * m[0][j]
+
+    print("Matriks setelah eliminasi:")
+    for baris in m:
+        print(baris)
+
+    if m[1][1] == 0:
+        print("Sistem tidak memiliki solusi unik")
+        return
+
+    y = m[1][2] / m[1][1]
+
+    x = (m[0][2] - m[0][1] * y) / m[0][0]
+
+    print("\nHasil:")
+    print("x =", x)
+    print("y =", y)
 
 def gauss_ordo_3(m):
     # Eliminasi maju
