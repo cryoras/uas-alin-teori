@@ -128,7 +128,6 @@ def gauss_ordo_4(matriks):
             ruas_kanan - total_terhitung
         ) / koefisien_diagonal
 
-    return solusi
     print("W = ",solusi[0])
     print("X = ",solusi[1])
     print("Y = ",solusi[2])
