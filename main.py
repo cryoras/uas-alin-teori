@@ -74,8 +74,61 @@ for i in range(3):
 
 gauss_ordo_3(matrix)
 
-def gauss_ordo_4():
-  pass
+def gauss_ordo_4(matriks):
+
+    # Salin matriks agar matriks asli tidak berubah
+    A = [baris[:] for baris in matriks]
+    ukuran = len(A)
+
+    for kolom in range(ukuran):
+
+        # Cari baris dengan pivot terbesar
+        pivot_row = kolom
+
+        for baris in range(kolom + 1, ukuran):
+            if abs(A[baris][kolom]) > abs(A[pivot_row][kolom]):
+                pivot_row = baris
+
+        # Tukar baris bila diperlukan
+        if pivot_row != kolom:
+            A[kolom], A[pivot_row] = A[pivot_row], A[kolom]
+
+        # Cek matriks singular
+        if abs(A[kolom][kolom]) < 1e-12:
+            raise ValueError(
+                "Sistem tidak memiliki solusi unik."
+            )
+
+        # Eliminasi elemen di bawah pivot
+        for baris in range(kolom + 1, ukuran):
+
+            faktor = A[baris][kolom] / A[kolom][kolom]
+
+            for j in range(kolom, ukuran + 1):
+                A[baris][j] -= faktor * A[kolom][j]
+
+    #back subtituion
+    solusi = [0] * ukuran 
+    for i in range(ukuran - 1, -1, -1):
+
+        total_terhitung = 0
+
+
+        for j in range(i + 1, ukuran):
+
+            koefisien = A[i][j]
+            nilai_variabel = solusi[j]
+
+            total_terhitung += koefisien * nilai_variabel
+
+        ruas_kanan = A[i][ukuran]
+        koefisien_diagonal = A[i][i]
+
+        solusi[i] = (
+            ruas_kanan - total_terhitung
+        ) / koefisien_diagonal
+
+    return solusi
 
 
 def main():
