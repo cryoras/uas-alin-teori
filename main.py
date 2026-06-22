@@ -35,7 +35,7 @@ def gauss_ordo_1(m):
     print("x =", x)
 
 def gauss_ordo_2(m):
-
+    
     if m[0][0] == 0:
         print("Pivot bernilai 0")
         return
