@@ -24,6 +24,18 @@ ordo_4 = [
     [1, 2, 3, 5, 30]
 ]
 
+def input_matriks(n_baris, n_kolom):
+    """Minta input matriks augmented dari pengguna."""
+    print(f"\nMasukkan elemen matriks augmented {n_baris}x{n_kolom}:")
+    matriks = []
+    for i in range(n_baris):
+        baris = []
+        for j in range(n_kolom):
+            nilai = float(input(f"  Baris {i+1} Kolom {j+1}: "))
+            baris.append(nilai)
+        matriks.append(baris)
+    return matriks
+
 def gauss_ordo_1(m):
     a = m[0][0]
     b = m[0][1]
@@ -147,18 +159,32 @@ def gauss_ordo_4(matriks):
 
 
 def main():
-    print("1. Ordo 1")
-    print("2. Ordo 2")
-    print("3. Ordo 3")
-    print("4. Ordo 4")
+    print("=" * 40)
+    print("   ELIMINASI GAUSS")
+    print("=" * 40)
+    print("Pilih ordo sistem persamaan:")
+    print("  1. Ordo 1  (1 variabel)")
+    print("  2. Ordo 2  (2 variabel)")
+    print("  3. Ordo 3  (3 variabel)")
+    print("  4. Ordo 4  (4 variabel)")
 
-    pilihan = int(input())
+    pilihan = int(input("\nPilihan: "))
 
     if pilihan == 1:
-        gauss_ordo_1()
+        matriks = input_matriks(1, 2)
+        gauss_ordo_1(matriks)
     elif pilihan == 2:
-        gauss_ordo_2()
+        matriks = input_matriks(2, 3)
+        gauss_ordo_2(matriks)
     elif pilihan == 3:
-        gauss_ordo_3()
+        matriks = input_matriks(3, 4)
+        gauss_ordo_3(matriks)
     elif pilihan == 4:
-        gauss_ordo_4()
+        matriks = input_matriks(4, 5)
+        gauss_ordo_4(matriks)
+    else:
+        print("Pilihan tidak valid.")
+
+
+if __name__ == "__main__":
+    main()
